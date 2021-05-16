@@ -1,6 +1,6 @@
 # Bing Image Extractor
 
-Web extractor for Yahoo Image website
+Web extractor for Bing Image website
 
 ## Installation:
 
