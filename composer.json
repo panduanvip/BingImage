@@ -1,0 +1,25 @@
+{
+    "name": "panduanvip/bing-image",
+    "type": "library",
+    "description": "Bing Image Extractor",
+    "keywords": ["Web Extractor", "HTML Extractor", "Data Extractor", "Bing Image", "Web Scraping"],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "homepage": "https://panduan.vip",
+
+    "authors": [
+        {
+            "name": "Yoyon Sugiono",
+            "email": "yoyonsugiono@gmail.com",
+            "homepage": "https://panduan.vip",
+            "role": "developer"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "PanduanVIP\\WebExtractor\\": "src/"
+        }
+    }    
+    
+}
