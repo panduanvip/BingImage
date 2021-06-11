@@ -2,10 +2,10 @@
     "name": "panduanvip/bing-image",
     "type": "library",
     "description": "Bing Image Extractor",
-    "keywords": ["Web Extractor", "HTML Extractor", "Data Extractor", "Bing Image", "Web Scraping"],
+    "keywords": ["Web Extractor", "HTML Extractor", "Data Extractor", "Bing Image", "Web Scraping", "AGC Image"],
     "license": "MIT",
     "minimum-stability": "stable",
-    "homepage": "https://panduan.vip",
+    "homepage": "https://github.com/panduanvip/BingImage",
 
     "authors": [
         {
