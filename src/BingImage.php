@@ -5,8 +5,10 @@ namespace PanduanVIP\WebExtractor;
 class BingImage
 {
 
-	public static function extractor($html)
+	public static function get($keyword, $proxy='')
     {
+		$html = self::curl($keyword, $proxy);
+
 		$dom = new \DOMDocument('1.0', 'UTF-8');
 		@$dom->loadHTML($html);
 		$xpath = new \DOMXPath($dom);
@@ -51,6 +53,38 @@ class BingImage
 		}
 
 		return json_encode($results);
+	}
+
+	private static function curl($keyword, $proxy='')
+	{
+		if (!function_exists('curl_version')) {
+			die('cURL extension is disabled on your server!');
+		}
+
+		$keyword = str_replace(' ', '+', $keyword);
+		$url = "https://www.bing.com/images/search?q=$keyword&qft=+filterui:imagesize-large&FORM=HDRSC2";
+		
+		$user_agent = 'Mozilla/4.0 (compatible; MSIE 6.0b; Windows NT 5.1; DigExt)';
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);	
+		curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+		if (isset($_SERVER['HTTP_REFERER'])) {
+			curl_setopt($ch, CURLOPT_REFERER, $_SERVER['HTTP_REFERER']);
+		}
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+		if (!empty($proxy)) {
+			curl_setopt($ch, CURLOPT_PROXY, $proxy);
+		}
+		$result = curl_exec($ch);
+		curl_close($ch);
+		return $result;
 	}
   
 }
