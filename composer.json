@@ -20,6 +20,8 @@
         "psr-4": {
             "PanduanVIP\\WebExtractor\\": "src/"
         }
-    }    
-    
+    },
+    "require": {
+        "panduanvip/helpers": "^1.0"
+    }
 }
